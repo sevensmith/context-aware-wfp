@@ -10,7 +10,7 @@ from sklearn.model_selection import StratifiedKFold
 
 
 def decision_tree_model(feats, labels):
-    x_train, x_test, y_train, y_test = train_test_split(feats, labels, test_size=0.25, random_state=33)
+    x_train, x_test, y_train, y_test = train_test_split(feats, labels, test_size=0.25, stratify=labels)
     print y_train.shape, y_test.shape
     dtc = DecisionTreeClassifier()
     dtc.fit(x_train, y_train)
@@ -51,7 +51,7 @@ def kfold_knn_model(feats, labels):
 
 
 def knn_model(feats, labels):
-    x_train, x_test, y_train, y_test = train_test_split(feats, labels, test_size=0.25, random_state=33)
+    x_train, x_test, y_train, y_test = train_test_split(feats, labels, test_size=0.25, stratify=labels)
     # print y_train.shape, y_test.shape
     knc = KNeighborsClassifier(n_neighbors=3)
     knc.fit(x_train, y_train)
@@ -76,7 +76,7 @@ def knn_model(feats, labels):
 
 
 def svc_model(feats, labels):
-    x_train, x_test, y_train, y_test = train_test_split(feats, labels, test_size=0.25, random_state=33)
+    x_train, x_test, y_train, y_test = train_test_split(feats, labels, test_size=0.25, stratify=labels)
     print y_train.shape, y_test.shape
     ss = StandardScaler()
     x_train = ss.fit_transform(x_train)
